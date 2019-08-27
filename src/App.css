@@ -27,7 +27,7 @@ a:hover {
   overflow: hidden;
   position: relative;
   background: linear-gradient(to top, #000, #3a414e);
-  color: #ddd;
+  color:var(--white);
 }
 
 /********************* NAVIGATION **********************/
@@ -104,4 +104,65 @@ nav .nav-links a {
     transform: rotate(29deg);
     transform-origin: bottom right;
   }
+}
+
+/***************** BASIC STYLE FOR EVERY VIEW ******************/
+.view {
+  width: 100%;
+  height: 100%;
+  padding: var(--nav-height) 1em 1em 1em;
+  display: grid;
+}
+
+.page-heading {
+  padding: 1em 0;
+}
+
+/**************** LEADERBOARDS *****************************/
+.leaderboards {
+  max-height: 100vh;
+  max-width: 700px;
+  grid-template-rows: auto 1fr;
+  margin: 0 auto;
+}
+
+.standings-grid {
+  max-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+}
+
+.toggle-standings {
+  display: flex;
+}
+
+.toggle-standings button {
+  flex: 1;
+  border: 1px solid var(--white);
+  background: none;
+  color: var(--white);
+  padding: 1em;
+}
+
+.toggle-standings button:hover {
+  background: pink;
+}
+
+.leaderboards .table {
+  overflow-y: scroll;
+}
+
+.leader a {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr 7fr 2fr;
+}
+
+.leader:nth-child(odd) {
+  background: rgba(0,0,0,0.7);
+}
+
+.leader:hover {
+  background: pink;
 }

@@ -19,7 +19,6 @@ const Nav = () => {
         <Link to="/">Leaderboard</Link>
         <Link to="/head-to-head">Head To Head</Link>
         <Link to="/calendar">Calendar</Link>
-        
       </div>
       <Burger handleClick={toggleNav} dynamicClass={burgerClass}/>
     </nav>
