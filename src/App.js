@@ -19,7 +19,7 @@ function App() {
         <Route path="/teaminfo" component={TeamInfo} />
         <Route path="/head-to-head" component={HeadToHead} />
         <Route path="/calendar" component={Calendar} />
-        <Route path="/trackinfo" component={TrackInfo} />
+        <Route path="/trackinfo/:name, :round, :locale, :country" component={TrackInfo} />
       </BrowserRouter>
     </div>
   );
