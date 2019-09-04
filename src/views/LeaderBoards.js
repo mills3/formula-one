@@ -67,7 +67,7 @@ const LeaderBoards = () => {
           {
             table === 'drivers' 
               ? drivers.map(d => <Leader position={d.position} name={d.Driver.familyName} points={d.points} key={d.Driver.familyName} table={table} id={d.Driver.driverId} />)
-              : teams.map(t => <Leader position={t.position} name={t.Constructor.name} points={t.points} key={t.Constructor.name} table={table} />)
+              : teams.map(t => <Leader position={t.position} name={t.Constructor.name} points={t.points} key={t.Constructor.name} table={table} id={t.Constructor.constructorId} />)
           }
         </div>
       </div>

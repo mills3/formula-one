@@ -1,3 +1,9 @@
+/*
+////////////// maybe horizontal bar chart for mobile screens???
+*/
+
+
+
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import teamColors from '../teamColors';

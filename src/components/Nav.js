@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from './Logo';
 import Burger from './Burger';
 
 const Nav = () => {
@@ -14,7 +15,8 @@ const Nav = () => {
 
   return (
     <nav>
-      <Link to="/"><h1>F1</h1></Link>
+      {/* <Link to="/"><h1>F1</h1></Link> */}
+      <Link to="/"><Logo width={'60px'} /></Link>
       <div className={`nav-links ${navClass}`}>
         <Link to="/" onClick={toggleNav}>Leaderboard</Link>
         <Link to="/head-to-head" onClick={toggleNav}>Head To Head</Link>

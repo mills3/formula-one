@@ -1,18 +1,35 @@
 import React from 'react';
 
-const TeamInfo = () => {
+import Logo from '../components/Logo';
+
+const TeamInfo = ({ match }) => {
+
+  const example = {
+    MRData: {
+      ConstructorTable: {
+        constructorId: 'ferrari',
+        Constructors: {
+          0: {
+            constructorId: 'ferrari',
+            name: 'Ferrari',
+            nationality: 'Italian'
+          }
+        }
+      }
+    }
+  }
+
   return (  
     <div className="teaminfo view">
-      <img src={require('../assets/cars/ferrari1.png')} alt=""  />
-      <h1 className="page-heading">Team Info</h1>
+      <h1>{ example.MRData.ConstructorTable.Constructors[0].name }</h1>
+      <div className="team-stats">
+        <p>Position: <span>2</span></p>
+        <p>Points: <span>138</span></p>
+        <p>Nationality: <span>{ example.MRData.ConstructorTable.Constructors[0].nationality }</span></p>
+      </div>
+      <img src={require('../assets/cars/ferrari-front.png')} alt="" />
     </div>
   );
-}
-
-const imgStyles = {
-  width: '1000px',
-  height: '400px',
-  objectFit: 'contain',
 }
  
 export default TeamInfo;

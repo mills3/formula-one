@@ -30,6 +30,38 @@ a:hover {
   color:var(--white);
 }
 
+/***************** LOGO *********************/
+#logo {
+  /* width: 40vw; */
+}
+
+#logo path {
+  stroke: #fff;
+  stroke-width: 1px;
+  animation: drawLogo 3s forwards;
+}
+
+#logo #f-outer {
+  stroke-dasharray: 240px;
+  stroke-dashoffset: 240px;
+}
+
+#logo #f-inner {
+  stroke-dasharray: 152px;
+  stroke-dashoffset: 152px;
+}
+
+#logo #one { 
+  stroke-dasharray: 130px;
+  stroke-dashoffset: 130px;
+}
+
+@keyframes drawLogo {
+  0% { fill: none; }
+  50% { stroke-dashoffset: 0; fill: none; }
+  100% { stroke-width: 0; stroke-dashoffset: 0; fill: #fff; }
+}
+
 /********************* NAVIGATION **********************/
 nav {
   position: absolute;
@@ -187,7 +219,7 @@ nav .nav-links a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, #000, rgba(0,0,0,0.1));
+  background: linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,0));
 }
 
 .driverinfo img {
@@ -243,11 +275,49 @@ nav .nav-links a {
 }
 
 /******************** TEAM INFO ******************************/
-.teaminfo img {
-  width: 500px;
-  grid-row: 2;
-  filter: drop-shadow(0px 15px 15px rgba(0,0,0,.5));
+.teaminfo {
+  grid-template-columns: 1fr 1fr;
 }
+
+.teaminfo * {
+  align-self: center;
+  justify-self: center;
+}
+
+.teaminfo h1 {
+  grid-column: 1 / -1;
+  font-weight: 100;
+  letter-spacing: 3vw;
+  font-size: calc(1.6em + 2vw);
+  text-align: center;
+}
+
+.teaminfo img {
+  width: 100%;
+  max-width: 700px;
+  filter: drop-shadow(0 10px 10px rgba(0,1,0,0.8));
+}
+
+.teaminfo .team-stats {
+  font-size: calc(1em + 1.6vw);
+}
+
+.teaminfo .team-stats p {
+  margin: 1em;
+  color: #aaa;
+}
+
+.teaminfo .team-stats p span {
+  font-style: italic;
+  color: #fff;
+}
+
+@media (orientation: portrait) {
+  .teaminfo {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /********************* CHART *********************************/
 

@@ -18,7 +18,7 @@ function App() {
           <Nav />
           <Route exact path="/" component={LeaderBoards} />
           <Route path="/driverInfo/:id" component={DriverInfo} />
-          <Route path="/teaminfo" component={TeamInfo} />
+          <Route path="/teaminfo/:id" component={TeamInfo} />
           <Route path="/head-to-head" component={HeadToHead} />
           <Route path="/calendar" component={Calendar} />
           <Route path="/trackinfo/:name, :round, :locale, :country" component={TrackInfo} />
