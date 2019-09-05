@@ -234,13 +234,62 @@ nav .nav-links a {
 
 .driverinfo .aboveBgImg {
   z-index: 2;
+  /* padding: 2em; */
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin: 4vw;
+}
+
+.driver-name {
+  font-size: 6vmin;
+  grid-row: 1;
+  text-transform: uppercase;
 }
 
 .driver-number {
-  position: absolute;
+  /* position: absolute; */
+  grid-row: 1;
+  justify-self: end;
   bottom: 20px;
   right: 20px;
-  font-size: 6rem;
+  font-size: 36vmin;
+  opacity: .3;
+}
+
+.driverinfo .stats {
+  grid-column: 1 / -1;
+  font-weight: 100;
+  font-size: 5vmin;
+  display: flex;
+  justify-content: space-around;
+  align-self: end;
+}
+
+@media (orientation: portrait) {
+  .driverinfo .aboveBgImg {
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+  }
+
+  .driverinfo img {
+    height: 100%;
+    justify-self: start;
+    transform: translateX(-5%);
+  }
+
+  .driver-number {
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .driverinfo .stats {
+    padding: 1em 0;
+    flex-direction: column;
+    align-self: stretch;
+    justify-content: space-around;
+  }
 }
 
 /******************** CALENDAR ***********************/

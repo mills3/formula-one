@@ -3,31 +3,15 @@ import React from 'react';
 import Logo from '../components/Logo';
 
 const TeamInfo = ({ match }) => {
-
-  const example = {
-    MRData: {
-      ConstructorTable: {
-        constructorId: 'ferrari',
-        Constructors: {
-          0: {
-            constructorId: 'ferrari',
-            name: 'Ferrari',
-            nationality: 'Italian'
-          }
-        }
-      }
-    }
-  }
-
   return (  
     <div className="teaminfo view">
-      <h1>{ example.MRData.ConstructorTable.Constructors[0].name }</h1>
+      <h1>{ match.params.name.toUpperCase() }</h1>
       <div className="team-stats">
-        <p>Position: <span>2</span></p>
-        <p>Points: <span>138</span></p>
-        <p>Nationality: <span>{ example.MRData.ConstructorTable.Constructors[0].nationality }</span></p>
+        <p>Position: <span>{ match.params.position }</span></p>
+        <p>Points: <span>{ match.params.points }</span></p>
+        <p>Nationality: <span>{ match.params.nation }</span></p>
       </div>
-      <img src={require('../assets/cars/ferrari-front.png')} alt="" />
+      <img src={require('../assets/cars/renault-front.png')} alt="" />
     </div>
   );
 }

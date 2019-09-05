@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Leader from '../components/Leader';
+import DriverLeader from '../components/DriverLeader';
+import TeamLeader from '../components/TeamLeader';
 
 // placeholder data 
 const driversData = [
@@ -66,8 +67,8 @@ const LeaderBoards = () => {
         <div className="table">
           {
             table === 'drivers' 
-              ? drivers.map(d => <Leader position={d.position} name={d.Driver.familyName} points={d.points} key={d.Driver.familyName} table={table} id={d.Driver.driverId} />)
-              : teams.map(t => <Leader position={t.position} name={t.Constructor.name} points={t.points} key={t.Constructor.name} table={table} id={t.Constructor.constructorId} />)
+              ? drivers.map(d => <DriverLeader number={d.Driver.permanentNumber} position={d.position} name={d.Driver.familyName} points={d.points} key={d.Driver.familyName} table={table} id={d.Driver.driverId} nation={d.Driver.nationality} firstName={d.Driver.givenName} />)
+              : teams.map(t => <TeamLeader position={t.position} name={t.Constructor.name} points={t.points} key={t.Constructor.name} table={table} id={t.Constructor.constructorId} nation={t.Constructor.nationality} />)
           }
         </div>
       </div>

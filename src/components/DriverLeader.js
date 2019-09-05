@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Leader = ({ position, name, points, table, id }) => {
-
-  const path = table === 'drivers' ? 'driverinfo' : 'teaminfo';
+const DriverLeader = ({ position, name, points, id, nation, number, firstName }) => {
 
   return (  
     <div className="leader">
-      {/* equates to '/drivers/vettel' || '/teaminfo/ferrari' */}
-      <Link to={`/${path}/${id}`}>
+      {/* equates to '/drivers/vettel'  */}
+      <Link to={`/driverinfo/${id}, ${position}, ${points}, ${name}, ${nation}, ${number}, ${firstName}`}>
         <div className="position">{ position }</div>
         <div className="name">{ name }</div>
         <div className="points">{ points }</div>
@@ -17,4 +15,4 @@ const Leader = ({ position, name, points, table, id }) => {
   );
 }
  
-export default Leader;
+export default DriverLeader;

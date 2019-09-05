@@ -22,6 +22,7 @@ const data = {
 }
 
 const DriverInfo = ({ match }) => {
+  //DONT NEED ANY OF THIS!!!!!!!!   I THINK....................
   // const [info, setInfo] = useState({});
 
   // useEffect(() => {
@@ -42,12 +43,15 @@ const DriverInfo = ({ match }) => {
       <img src={`https://res.cloudinary.com/dzll7mejv/image/upload/v1566914937/f1-drivers/${match.params.id}.jpg`} alt="" />
       <div className="aboveBgImg">
         {/* <h1 className="page-heading">Driver Info</h1> */}
-        <div className="stats">
-          <h1 className="outlined-text driver-number">{ info.permanentNumber }</h1>
-          <h2>{ info.givenName }</h2>
-          <h2>{ info.familyName }</h2>
-          <h2>{ info.dateOfBirth }</h2>
-          <h2>{ info.nationality }</h2>
+        <div className="driver-name">
+            <h2>{ match.params.firstName }</h2>
+            <h2>{ match.params.name }</h2>
+          </div>
+          <h1 className="outlined-text driver-number">{ match.params.number }</h1>
+        <div className="stats">  
+          <p>points - { match.params.points }</p>        
+          <p>position - { match.params.position }</p>          
+          <p>nationality - { match.params.nation }</p>
         </div>
       </div>      
     </div>
