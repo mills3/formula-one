@@ -25,33 +25,40 @@ const Chart2 = ({ data1, data2, team1, team2, driver1, driver2 }) => {
   }, [team1, team2]);
   
   const data = {
-    labels: data1.map(d => d.x),
+    labels: data1.map(d => d.race),
     datasets: [
       {
         label: driver1 || 1, //complains about key before driver1 is set
-        data: data1.map(d => d.y),
+        data: data1.map(d => d.position),
         fill: false,          // Don't fill area under the line
         borderColor: team1Color  // Line color
       },
       { 
         label: driver2 || 2,
-        data: data2.map(d => d.y),
+        data: data2.map(d => d.position),
         fill: false,
         borderColor: team2Color
       }
     ],
   };
 
-  const options = {scales:{yAxes:[{ticks: {
-    reverse: true,
-    max: 20,
-    min: 1
-  }}]}};
+  const options = {
+    maintainAspectRatio: false,
+    scales:{
+      yAxes:[{
+        ticks: {
+          reverse: true,
+          max: 20,
+          min: 1
+        }
+      }]
+    }
+  };
 
   return (  
-    <>
+    <div className="chart">
       <Line data={data} options={options} />
-    </>
+    </div>
   );
 }
  

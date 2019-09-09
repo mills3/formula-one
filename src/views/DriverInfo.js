@@ -21,9 +21,9 @@ const DriverInfo = ({ match }) => {
           </div>
           <h1 className="outlined-text driver-number">{ match.params.number }</h1>
         <div className="stats">  
-          <p>points - { match.params.points }</p>        
-          <p>position - { match.params.position }</p>          
-          <p>nationality - { match.params.nation }</p>
+          <p>points: <span>{ match.params.points }</span></p>        
+          <p>position: <span>{ match.params.position }</span></p>          
+          <p>nationality: <span>{ match.params.nation }</span></p>
         </div>
       </div>      
     </div>

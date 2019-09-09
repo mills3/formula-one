@@ -25,7 +25,7 @@ const HeadToHead = () => {
   const getDriverData = async (driver, setData, setTeam) => {
     const response = await fetch(`https://ergast.com/api/f1/current/drivers/${driver}/results.json`);
     const data = await response.json();
-    const simple = data.MRData.RaceTable.Races.map(d => ({ x: d.round, y: Number(d.Results[0].position) }));
+    const simple = data.MRData.RaceTable.Races.map(d => ({ race: d.Circuit.Location.country, position: Number(d.Results[0].position) }));
     setData(simple);
     const teamName = data.MRData.RaceTable.Races[0].Results[0].Constructor.name;
     setTeam(teamName);
@@ -62,7 +62,6 @@ const HeadToHead = () => {
           driver2={d2ToPass} 
         /> : <p>Fetching Data...</p>
       }
-      
     </div>
   );
 }

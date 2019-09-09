@@ -11,7 +11,7 @@ const TeamInfo = ({ match }) => {
         <p>Points: <span>{ match.params.points }</span></p>
         <p>Nationality: <span>{ match.params.nation }</span></p>
       </div>
-      <img src={require('../assets/cars/renault-front.png')} alt="" />
+      <img src={require('../assets/cars/mercedes-front.png')} alt="" />
     </div>
   );
 }
