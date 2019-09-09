@@ -189,7 +189,7 @@ nav .nav-links a {
 }
 
 .leaderboards .table {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .leader a {
@@ -362,7 +362,13 @@ nav .nav-links a {
 .teaminfo img {
   width: 100%;
   max-width: 700px;
-  filter: drop-shadow(0 10px 10px rgba(0,1,0,0.8));
+  filter: drop-shadow(0 10px 3px rgba(0,0,0,0.8));
+  opacity: 0;
+  transition: opacity 3s;
+}
+
+.teaminfo img.fade-in {
+  opacity: 1;
 }
 
 .teaminfo .team-stats {
@@ -400,6 +406,23 @@ nav .nav-links a {
   transform: translate(-50%, -50%);
 }
 
+.head-to-head form {
+  justify-self: center;
+  display: flex;
+}
+
+.head-to-head .select-wrapper {
+  position: relative;
+}
+
+.head-to-head .select-wrapper:first-of-type::after {
+  content: "VS";
+  position: absolute;
+  right: -7%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
 .head-to-head select {
   color: var(--white);
   border-radius: 0;
@@ -409,6 +432,8 @@ nav .nav-links a {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+  text-align: center;
+  margin: 0 2em;
 }
 
 /* CAN'T WAIT TO SEE THIS AFTER 20 RACES ON MOBILE SCREENS */
@@ -421,3 +446,4 @@ nav .nav-links a {
   justify-self: center;
   min-height: 250px;
 }
+

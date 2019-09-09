@@ -20,6 +20,19 @@ const HeadToHead = () => {
   //Set the team names for color coding the chart
   const [team1, setTeam1] = useState('Mercedes');
   const [team2, setTeam2] = useState('Ferrari');
+
+  // Prevent comparing of Vettel against Vettel for example
+  const selectDriver1 = (e) => {
+    if(e.target.value !== driver2) {
+      setDriver1(e.target.value);
+    }
+  }
+
+  const selectDriver2 = (e) => {
+    if(e.target.value !== driver1) {
+      setDriver2(e.target.value);
+    }
+  }
   
   // Reusable func to get new driver data sets
   const getDriverData = async (driver, setData, setTeam) => {
@@ -48,8 +61,10 @@ const HeadToHead = () => {
     <div className="head-to-head view" >
       <h1 className="page-heading">Head To Head</h1>
       <form>
-        <SelectDriver selectValue={driver1} handleChange={(e) => setDriver1(e.target.value)}/>
-        <SelectDriver selectValue={driver2} handleChange={(e) => setDriver2(e.target.value)}/>
+        {/* <SelectDriver selectValue={driver1} handleChange={(e) => setDriver1(e.target.value)}/>
+        <SelectDriver selectValue={driver2} handleChange={(e) => setDriver2(e.target.value)}/> */}
+        <SelectDriver selectValue={driver1} handleChange={(e) => selectDriver1(e)}/>
+        <SelectDriver selectValue={driver2} handleChange={(e) => selectDriver2(e)}/>
       </form>
       {
         d2ToPass ? 
