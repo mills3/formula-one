@@ -14,7 +14,7 @@ const TeamInfo = ({ match }) => {
 
   return (  
     <div className="teaminfo view">
-      <h1>{ match.params.name.toUpperCase() }</h1>
+      <h1 className="page-heading">{ match.params.name.toUpperCase() }</h1>
       <div className="team-stats">
         <p>Position: <span>{ match.params.position }</span></p>
         <p>Points: <span>{ match.params.points }</span></p>
