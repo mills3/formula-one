@@ -21,10 +21,10 @@ const TrackInfo = ({ match }) => {
     <div className="trackinfo view">
       <div className="stats">
         <div>
-          <h1 className="track-country page-heading">{ match.params.country }</h1>
-          <h3 className="track-name" style={{ color: '#aaa' }}>{ match.params.locale }</h3>
+          <h1 className="track-country page-heading appear">{ match.params.country }</h1>
+          <h3 className="track-name appear delay1" style={{ color: '#aaa' }}>{ match.params.locale }</h3>
         </div>  
-        <h1 className="outlined-text">{ match.params.round }</h1>
+        <h1 className="outlined-text appear delay2">{ match.params.round }</h1>
       </div>
        
       <svg viewBox="0 0 105.83334 79.374998">

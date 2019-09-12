@@ -30,11 +30,19 @@ const driversData = [
     {"position":"1","positionText":"1","points":"438","wins":"10","Constructor":{"constructorId":"mercedes","url":"http://en.wikipedia.org/wiki/Mercedes-Benz_in_Formula_One","name":"Mercedes","nationality":"German"}},{"position":"2","positionText":"2","points":"288","wins":"0","Constructor":{"constructorId":"ferrari","url":"http://en.wikipedia.org/wiki/Scuderia_Ferrari","name":"Ferrari","nationality":"Italian"}},{"position":"3","positionText":"3","points":"244","wins":"2","Constructor":{"constructorId":"red_bull","url":"http://en.wikipedia.org/wiki/Red_Bull_Racing","name":"Red Bull","nationality":"Austrian"}},{"position":"4","positionText":"4","points":"82","wins":"0","Constructor":{"constructorId":"mclaren","url":"http://en.wikipedia.org/wiki/McLaren","name":"McLaren","nationality":"British"}},{"position":"5","positionText":"5","points":"43","wins":"0","Constructor":{"constructorId":"toro_rosso","url":"http://en.wikipedia.org/wiki/Scuderia_Toro_Rosso","name":"Toro Rosso","nationality":"Italian"}},{"position":"6","positionText":"6","points":"39","wins":"0","Constructor":{"constructorId":"renault","url":"http://en.wikipedia.org/wiki/Renault_in_Formula_One","name":"Renault","nationality":"French"}},{"position":"7","positionText":"7","points":"32","wins":"0","Constructor":{"constructorId":"alfa","url":"http://en.wikipedia.org/wiki/Alfa_Romeo_in_Formula_One","name":"Alfa Romeo","nationality":"Italian"}},{"position":"8","positionText":"8","points":"31","wins":"0","Constructor":{"constructorId":"racing_point","url":"http://en.wikipedia.org/wiki/Racing_Point_F1_Team","name":"Racing Point","nationality":"British"}},{"position":"9","positionText":"9","points":"26","wins":"0","Constructor":{"constructorId":"haas","url":"http://en.wikipedia.org/wiki/Haas_F1_Team","name":"Haas F1 Team","nationality":"American"}},{"position":"10","positionText":"10","points":"1","wins":"0","Constructor":{"constructorId":"williams","url":"http://en.wikipedia.org/wiki/Williams_Grand_Prix_Engineering","name":"Williams","nationality":"British"}}
   ];
 
+  const active = {
+    background: '#0c0e11',
+    color: '#fff'
+  }
+
 const LeaderBoards = () => {
   const [drivers, setDrivers] = useState(driversData);
   const [teams, setTeams] = useState(teamData);
-  const [table, setTable] = useState('drivers');
+  const [table, setTable] = useState('Drivers');
+  const [driverBtn, setDriverBtn] = useState(active);
+  const [constructorBtn, setConstructorBtn] = useState({});
 
+  //ONLY NEED TO UPDATE AT MOST ONCE A WEEK
   // useEffect(() => {
   //   getDriversData();
   // }, []);
@@ -56,17 +64,30 @@ const LeaderBoards = () => {
     setTeams(data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
   }
 
+  // Set active button styles
+  useEffect(() => {
+    if(table === 'Drivers') {
+      setDriverBtn(active);
+      setConstructorBtn({});
+    } else {
+      setDriverBtn({});
+      setConstructorBtn(active);
+    }
+  }, [table]);
+
   return (  
     <div className="leaderboards view">
-      <h1 className="page-heading">Current Standings</h1>
+      <h1 className="page-heading">Championship</h1>
       <div className="standings-grid">
         <div className="toggle-standings">
-          <button onClick={ () => setTable('drivers') }>Drivers</button>
-          <button onClick={ () => setTable('constructors') }>Constructors</button>
+          <button onClick={() => setTable('Drivers')} style={driverBtn}>Drivers</button>
+          <button onClick={() => setTable('Constructors')} style={constructorBtn}>Constructors</button>
+          {/* <button onClick={ e => handleClick(e) }>Drivers</button>
+          <button onClick={ e => handleClick(e) }>Constructors</button> */}
         </div>
         <div className="table">
           {
-            table === 'drivers' 
+            table === 'Drivers' 
               ? drivers.map(d => <DriverLeader number={d.Driver.permanentNumber} position={d.position} name={d.Driver.familyName} points={d.points} key={d.Driver.familyName} table={table} id={d.Driver.driverId} nation={d.Driver.nationality} firstName={d.Driver.givenName} />)
               : teams.map(t => <TeamLeader position={t.position} name={t.Constructor.name} points={t.points} key={t.Constructor.name} table={table} id={t.Constructor.constructorId} nation={t.Constructor.nationality} />)
           }

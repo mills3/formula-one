@@ -21,7 +21,7 @@ const Calendar = () => {
     <div className="calendar view">
       <div>
         <h1 className="page-heading">Calendar</h1>
-        <h1 className="light-text" style={{fontWeight: 100}}>{calendar.season}</h1>
+        <h1 className="season">{calendar.season}</h1>
       </div>
       <div className="calendar-table">
         {

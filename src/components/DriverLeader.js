@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const DriverLeader = ({ position, name, points, id, nation, number, firstName }) => {
 
   return (  
-    <div className="leader">
+    <div className="driver-leader leader">
       {/* equates to '/drivers/vettel'  */}
       <Link to={`/driverinfo/${id}, ${position}, ${points}, ${name}, ${nation}, ${number}, ${firstName}`}>
         <div className="position">{ position }</div>

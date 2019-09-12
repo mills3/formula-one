@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Nav from './components/Nav';
@@ -10,10 +10,25 @@ import Calendar from './views/Calendar';
 import TrackInfo from './views/TrackInfo';
 
 function App() {
+  const [darkTheme, setDarkTheme] = useState(true);
+
+  const toggleTheme = () => {
+    //document.body.style.setProperty('--white', 'red');
+    if(darkTheme) {
+      document.body.style.setProperty('--textColor', '#1f232a');
+      document.body.style.setProperty('--bgGradient', 'linear-gradient(to top, #ddd, #fff)');
+      setDarkTheme(false);
+    } else {
+      document.body.style.setProperty('--textColor', '#ddd');
+      document.body.style.setProperty('--bgGradient', 'linear-gradient(to top, #000, #3a414e)');
+      setDarkTheme(true);
+    }
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />
+        <Nav  onClick={toggleTheme} handleTheme={toggleTheme}/>
         <Route exact path="/" component={LeaderBoards} />
         <Route path="/driverInfo/:id, :position, :points, :name, :nation, :number, :firstName" component={DriverInfo} />
         <Route path="/teaminfo/:id, :position, :points, :name, :nation" component={TeamInfo} />
