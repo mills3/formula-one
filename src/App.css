@@ -89,13 +89,17 @@ nav .nav-links a {
     top: 0;
     right: 0;
     transform: translateX(100%);
-    background: rgba(255,255,255,.1);
-    /* background: var(--textColor); */
-    color: var(--dark);
+    background: var(--textColor);
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     transition: transform 500ms;
+  }
+
+  nav .nav-links a {
+    color:var(--dark);
+    padding: 1em 0;
+    text-align: right;
   }
 
   .burger {
@@ -114,16 +118,20 @@ nav .nav-links a {
     height: 2px;
     background: var(--textColor);
     transition: 500ms;
+    transform-origin: right;
   }
 
   nav .nav-links.show-nav {
     transform: translateX(0);
   }
+
+  .burger.show-cross .line {
+    background: var(--dark);
+  }
   
   /* animate the burger lines */
   .burger.show-cross .line:nth-child(1) {
     transform: rotate(-29deg);
-    transform-origin: top right;
   }
 
   .burger.show-cross .line:nth-child(2) {
@@ -133,8 +141,8 @@ nav .nav-links a {
 
   .burger.show-cross .line:nth-child(3) {
     transform: rotate(29deg);
-    transform-origin: bottom right;
-  }
+  } 
+
 }
 
 /***************** BASIC STYLE FOR EVERY VIEW ******************/
