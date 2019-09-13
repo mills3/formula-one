@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const TeamLeader = ({ position, name, points, id, nation }) => {
   return (  
-    <div className="team-leader leader">
+    <div className="team-leader leader appear">
       <Link to={`/teaminfo/${id}, ${position}, ${points}, ${name}, ${nation}`}>
         <div className="position">{ position }</div>
         <div className="name">{ name }</div>

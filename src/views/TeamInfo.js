@@ -14,11 +14,11 @@ const TeamInfo = ({ match }) => {
 
   return (  
     <div className="teaminfo view">
-      <h1 className="page-heading">{ match.params.name.toUpperCase() }</h1>
+      <h1 className="page-heading appear">{ match.params.name.toUpperCase() }</h1>
       <div className="team-stats">
-        <p>Position: <span>{ match.params.position }</span></p>
-        <p>Points: <span>{ match.params.points }</span></p>
-        <p>Nationality: <span>{ match.params.nation }</span></p>
+        <p className="appear delay1">Position: <span>{ match.params.position }</span></p>
+        <p className="appear delay2">Points: <span>{ match.params.points }</span></p>
+        <p className="appear delay3">Nationality: <span>{ match.params.nation }</span></p>
       </div>
       {/* <img src={require('../assets/cars/mercedes-front.png')} alt="" /> */}
       <img 

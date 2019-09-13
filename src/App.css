@@ -6,6 +6,25 @@
   box-sizing: border-box;
 }
 
+.active {
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: -6px;
+  left: 0;
+  background: #fff;
+  animation: underline 700ms forwards;
+  animation-delay: 200ms;
+}
+@keyframes underline {
+  to { width: 100%; }
+}
+
 :root {
   --nav-height: 80px;
   --textColor: #ddd;
@@ -16,6 +35,9 @@
   --bgGradient: linear-gradient(to top, #000, #3a414e);
   --textColor: #ddd;
   --baseColor: #1f232a;
+
+  --small-text: .8rem;
+  --medium-text: 1rem;
 }
 
 .App {
@@ -75,6 +97,7 @@ nav {
 
 nav .nav-links a {
   margin: 0 2em;
+  font-size: var(--small-text);
 }
 
 .burger {
@@ -98,8 +121,10 @@ nav .nav-links a {
 
   nav .nav-links a {
     color:var(--dark);
-    padding: 1em 0;
+    padding: 1em 2em;
+    margin: 1em 0;
     text-align: right;
+    font-size: var(--medium-text);
   }
 
   .burger {
@@ -535,6 +560,10 @@ a:hover {
 
 .delay2 {
   animation-delay: 300ms;
+}
+
+.delay3 {
+  animation-delay: 400ms;
 }
 
 @keyframes appear {
