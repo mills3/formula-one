@@ -8,21 +8,6 @@
   box-sizing: border-box;
 }
 
-/* :root {
-  --nav-height: 80px;
-  --light: #ddd;
-  --dark: #1f232a;
-  --darkBg: linear-gradient(to top, #000, #3a414e);
-  --lightBg: linear-gradient(to top, #ddd, #fff);
-
-  --bgGradient: linear-gradient(to top, #000, #3a414e);
-  --light: #ddd;
-  --baseColor: #1f232a;
-
-  --small-text: .8rem;
-  --medium-text: 1rem;
-} */
-
 :root {
   --nav-height: 80px;
   --light: #ddd;
@@ -361,12 +346,10 @@ nav .nav-links a {
 }
 
 .driver-number {
-  /* position: absolute; */
   grid-row: 1;
   justify-self: end;
   bottom: 20px;
   right: 20px;
-  /* font-size: 36vmin; */
   opacity: .3;
 }
 
@@ -446,11 +429,6 @@ nav .nav-links a {
   color: #aaa;
 }
 
-/* .trackinfo .outlined-text {
-  font-size: 10rem;
-  opacity: .1;
-} */
-
 .trackinfo svg {
   justify-self: center;
   width: 90%;
@@ -484,7 +462,7 @@ nav .nav-links a {
 }
 
 /******************** TEAM INFO ******************************/
-.teaminfo {
+/* .teaminfo {
   grid-template-columns: 1fr 1fr;
 }
 
@@ -532,6 +510,63 @@ nav .nav-links a {
 @media (orientation: portrait) {
   .teaminfo {
     grid-template-columns: 1fr;
+  }
+} */
+
+.teaminfo {
+  grid-template-columns: 1fr;
+}
+
+ .teaminfo * {
+  align-self: center;
+  justify-self: center;
+}
+
+.teaminfo h1 {
+  grid-column: 1 / -1;
+  font-weight: 100;
+  letter-spacing: 2vw;
+  text-align: center;
+}
+
+.teaminfo img {
+  width: 100%;
+  max-width: 700px;
+  filter: drop-shadow(0 10px 3px rgba(0,0,0,0.8));
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.teaminfo img.fade-in {
+  opacity: 1;
+}
+
+.teaminfo .team-stats {
+  font-size: var(--medium-text);
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.teaminfo .team-stats p {
+  margin: 1em;
+  color: #aaa;
+}
+
+.teaminfo .team-stats p span {
+  font-style: italic;
+  color: var(--light);
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .teaminfo {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (orientation: landscape) and (min-height: 600px) {
+  .teaminfo .team-stats {
+    display: flex;
   }
 }
 
