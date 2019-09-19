@@ -22,7 +22,7 @@ const TrackInfo = ({ match }) => {
       <div className="stats">
         <div>
           <h1 className="track-country page-heading appear">{ match.params.country }</h1>
-          <h3 className="track-name appear delay1" style={{ color: '#aaa' }}>{ match.params.locale }</h3>
+          <h3 className="track-name appear delay1">{ match.params.locale }</h3>
         </div>  
         <h1 className="outlined-text appear delay2">{ match.params.round }</h1>
       </div>

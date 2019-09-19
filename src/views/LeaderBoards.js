@@ -88,8 +88,24 @@ const LeaderBoards = () => {
         <div className="table">
           {
             table === 'Drivers' 
-              ? drivers.map(d => <DriverLeader number={d.Driver.permanentNumber} position={d.position} name={d.Driver.familyName} points={d.points} key={d.Driver.familyName} table={table} id={d.Driver.driverId} nation={d.Driver.nationality} firstName={d.Driver.givenName} />)
-              : teams.map(t => <TeamLeader position={t.position} name={t.Constructor.name} points={t.points} key={t.Constructor.name} table={table} id={t.Constructor.constructorId} nation={t.Constructor.nationality} />)
+              ? drivers.map((d, i) => <DriverLeader 
+                  index={i}
+                  number={d.Driver.permanentNumber} 
+                  position={d.position} 
+                  name={d.Driver.familyName} 
+                  points={d.points} 
+                  key={d.Driver.familyName} 
+                  id={d.Driver.driverId} 
+                  nation={d.Driver.nationality} 
+                  firstName={d.Driver.givenName} />)
+              : teams.map((t, i) => <TeamLeader 
+                  index={i}
+                  position={t.position} 
+                  name={t.Constructor.name} 
+                  points={t.points} 
+                  key={t.Constructor.name} 
+                  id={t.Constructor.constructorId} 
+                  nation={t.Constructor.nationality} />)
           }
         </div>
       </div>

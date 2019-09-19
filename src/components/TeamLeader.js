@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const TeamLeader = ({ position, name, points, id, nation }) => {
+// NEED TO STAGGER THE FADE INS (in LeaderBoard.js, react-spring????)
+
+const TeamLeader = ({ index, position, name, points, id, nation }) => {
   return (  
-    <div className="team-leader leader appear">
+    <div className="team-leader leader appear" style={{ animationDelay: `${index * 50}ms` }}>
       <Link to={`/teaminfo/${id}, ${position}, ${points}, ${name}, ${nation}`}>
         <div className="position">{ position }</div>
         <div className="name">{ name }</div>

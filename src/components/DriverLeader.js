@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const DriverLeader = ({ position, name, points, id, nation, number, firstName }) => {
+// NEED TO STAGGER THE FADE INS (in LeaderBoard.js, react-spring????)
+
+const DriverLeader = ({ index, position, name, points, id, nation, number, firstName }) => {
 
   return (  
-    <div className="driver-leader leader appear">
+    <div className="driver-leader leader appear" style={{ animationDelay: `${index * 50}ms` }}>
       {/* equates to '/drivers/vettel'  */}
       <Link to={`/driverinfo/${id}, ${position}, ${points}, ${name}, ${nation}, ${number}, ${firstName}`}>
         <div className="position">{ position }</div>

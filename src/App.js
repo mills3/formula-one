@@ -8,9 +8,12 @@ import TeamInfo from './views/TeamInfo';
 import HeadToHead from './views/HeadToHead';
 import Calendar from './views/Calendar';
 import TrackInfo from './views/TrackInfo';
+import LoadingScreen from './components/LoadingScreen';
+
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const toggleTheme = () => {
     //document.body.style.setProperty('--white', 'red');
@@ -27,8 +30,9 @@ function App() {
 
   return (
     <div className="App">
+      {/* <LoadingScreen /> */}
       <BrowserRouter>
-        <Nav  onClick={toggleTheme} handleTheme={toggleTheme}/>
+        <Nav onClick={toggleTheme} handleTheme={toggleTheme}/>
         <Route exact path="/" component={LeaderBoards} />
         <Route path="/driverInfo/:id, :position, :points, :name, :nation, :number, :firstName" component={DriverInfo} />
         <Route path="/teaminfo/:id, :position, :points, :name, :nation" component={TeamInfo} />
