@@ -26,9 +26,9 @@ const Calendar = () => {
       <div className="calendar-table">
         {
           calendar.Races.map(race => (
-            <Link to={`/trackinfo/${race.raceName}, ${race.round}, ${race.Circuit.Location.locality}, ${race.Circuit.Location.country}`} key={race.round}>
+            <Link to={`/trackinfo/${race.raceName}, ${race.round}, ${race.Circuit.Location.locality}, ${race.Circuit.Location.country}, ${calendar.season}`} key={race.round}>
               <div className="race-component">
-                {race.round}. {race.raceName} {race.date}
+                <p>{race.round}.</p> <p className="racename">{race.raceName}</p> <p>{race.date}</p>
               </div>
             </Link>
           ))

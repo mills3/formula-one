@@ -42,7 +42,6 @@ const LeaderBoards = () => {
   const [driverBtn, setDriverBtn] = useState(active);
   const [constructorBtn, setConstructorBtn] = useState({});
 
-  //ONLY NEED TO UPDATE AT MOST ONCE A WEEK
   // useEffect(() => {
   //   getDriversData();
   // }, []);

@@ -59,15 +59,14 @@ const HeadToHead = () => {
 
   return (  
     <div className="head-to-head view" >
+      {/* {d2ToPass ? <h1 className="page-heading">Head To Head</h1> : <h1 className="page-heading">Fetching Data</h1>} */}
       <h1 className="page-heading">Head To Head</h1>
+      
       <form>
-        {/* <SelectDriver selectValue={driver1} handleChange={(e) => setDriver1(e.target.value)}/>
-        <SelectDriver selectValue={driver2} handleChange={(e) => setDriver2(e.target.value)}/> */}
         <SelectDriver selectValue={driver1} handleChange={(e) => selectDriver1(e)}/>
         <SelectDriver selectValue={driver2} handleChange={(e) => selectDriver2(e)}/>
-      </form>
-      {
-        d2ToPass ? 
+      </form> 
+      {d2ToPass ?  
         <Chart2 
           data1={data1} 
           data2={data2} 
@@ -75,10 +74,17 @@ const HeadToHead = () => {
           team2={team2}
           driver1={d1ToPass}
           driver2={d2ToPass} 
-        /> : <p>Fetching Data...</p>
+        /> :
+        <h3 className="appear" style={loadingStyles}>PLOTTING DATA...</h3>
       }
     </div>
   );
+}
+
+const loadingStyles = {
+  justifySelf: 'center',
+  alignSelf: 'center',
+  fontWeight: 100
 }
  
 export default HeadToHead;

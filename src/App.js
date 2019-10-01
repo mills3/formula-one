@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Nav from './components/Nav';
@@ -9,6 +9,8 @@ import HeadToHead from './views/HeadToHead';
 import Calendar from './views/Calendar';
 import TrackInfo from './views/TrackInfo';
 import LoadingScreen from './components/LoadingScreen';
+import NavLoader from './components/NavLoader';
+import Comparison from './views/Comparison';
 
 
 function App() {
@@ -28,17 +30,24 @@ function App() {
     }
   }
 
+  //Unmount the Logo loader
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 3400);
+  // }, []);
+
   return (
     <div className="App">
-      {/* <LoadingScreen /> */}
+      {/* { loading && <NavLoader /> } */}
       <BrowserRouter>
         <Nav onClick={toggleTheme} handleTheme={toggleTheme}/>
         <Route exact path="/" component={LeaderBoards} />
         <Route path="/driverInfo/:id, :position, :points, :name, :nation, :number, :firstName" component={DriverInfo} />
         <Route path="/teaminfo/:id, :position, :points, :name, :nation" component={TeamInfo} />
-        <Route path="/head-to-head" component={HeadToHead} />
+        <Route path="/head-to-head" component={Comparison} />
         <Route path="/calendar" component={Calendar} />
-        <Route path="/trackinfo/:name, :round, :locale, :country" component={TrackInfo} />
+        <Route path="/trackinfo/:name, :round, :locale, :country, :season" component={TrackInfo} />
       </BrowserRouter>
     </div>
   );
