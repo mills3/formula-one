@@ -31,8 +31,19 @@ const DriverList = ({ getDrivers }) => {
       const data = await res.json();
       setList(data.MRData.DriverTable.Drivers);
     }
-    fetchDrivers();
+    if(!localStorage.getItem('driverList')) {
+      fetchDrivers();
+    } else {
+      setList(JSON.parse(localStorage.getItem('driverList')));
+    }
   }, []);
+
+  // Set driverList in localStorage
+  useEffect(() => {
+    if(list.length > 0) {
+      localStorage.setItem('driverList', JSON.stringify(list));
+    }
+  }, [list]);
 
   return (  
     <div className={`driver-list ${open ? 'open' : ''}`}>
@@ -52,7 +63,7 @@ const DriverList = ({ getDrivers }) => {
       <div className='label' onClick={toggleMenu}>
         <p>Select Drivers</p>
       </div>
-      <button onClick={handleCompare}>Compare</button>
+      <button onClick={handleCompare}>COMPARE</button>
     </div>
   );
 }

@@ -22,8 +22,19 @@ const Comparison = () => {
       const races = data.MRData.RaceTable.Races.map(d => d.Circuit.Location.country);
       setLocations(races);    
     }
-    fetchRaceNames();
+    if(!localStorage.getItem('locations')) {
+      fetchRaceNames();
+    } else {
+      setLocations(JSON.parse(localStorage.getItem('locations')));
+    } 
   }, []);
+
+  // Set locations in localStorage
+  useEffect(() => {
+    if(locations) {
+      localStorage.setItem('locations', JSON.stringify(locations));
+    }
+  }, [locations]);
 
   //get data1 
   useEffect(() => {
@@ -58,7 +69,9 @@ const Comparison = () => {
       <div className="comparison view">
         <h1 className="page-heading">HEAD TO HEAD</h1>
         <DriverList getDrivers={getSelectedDrivers}/>
-        <LineChart data1={data1} data2={data2} locations={locations} />
+        <div className="chart-wrapper">
+          <LineChart data1={data1} data2={data2} locations={locations} />
+        </div>
       </div>
     );
   }
@@ -67,7 +80,7 @@ const Comparison = () => {
     <div className="comparison view">
       <h1 className="page-heading">HEAD TO HEAD</h1>
       <DriverList getDrivers={getSelectedDrivers}/>
-      <h2>Hold yer horses...</h2>
+      <h2 className="loading">PLOTTING DATA...</h2>
     </div>
   );
   

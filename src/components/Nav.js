@@ -3,9 +3,9 @@ import { Link, NavLink } from 'react-router-dom';
 import Logo from './Logo';
 import Burger from './Burger';
 
-const Nav = ({ handleTheme }) => {
+const Nav = () => {
   const [open, setOpen] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  // const [loaded, setLoaded] = useState(false);
 
   const navClass = open ? 'show-nav' : '';
   const burgerClass = open ? 'show-cross' : '';
@@ -21,7 +21,7 @@ const Nav = ({ handleTheme }) => {
         <NavLink exact to="/" onClick={toggleNav} activeClassName="active">LEADERBOARD</NavLink>
         <NavLink to="/head-to-head" onClick={toggleNav} activeClassName="active">HEAD TO HEAD</NavLink>
         <NavLink to="/calendar" onClick={toggleNav} activeClassName="active">CALENDAR</NavLink>
-      </div>
+      </div> 
       <Burger handleClick={toggleNav} dynamicClass={burgerClass}/>
     </nav>
   );

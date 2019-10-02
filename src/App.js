@@ -5,10 +5,10 @@ import Nav from './components/Nav';
 import LeaderBoards from './views/LeaderBoards';
 import DriverInfo from './views/DriverInfo';
 import TeamInfo from './views/TeamInfo';
-import HeadToHead from './views/HeadToHead';
+// import HeadToHead from './views/HeadToHead';
 import Calendar from './views/Calendar';
 import TrackInfo from './views/TrackInfo';
-import LoadingScreen from './components/LoadingScreen';
+// import LoadingScreen from './components/LoadingScreen';
 import NavLoader from './components/NavLoader';
 import Comparison from './views/Comparison';
 
@@ -30,16 +30,16 @@ function App() {
     }
   }
 
-  //Unmount the Logo loader
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setLoading(false);
-  //   }, 3400);
-  // }, []);
+  //Logo loader
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3400);
+  }, []);
 
   return (
     <div className="App">
-      {/* { loading && <NavLoader /> } */}
+      { loading && <NavLoader /> }
       <BrowserRouter>
         <Nav onClick={toggleTheme} handleTheme={toggleTheme}/>
         <Route exact path="/" component={LeaderBoards} />

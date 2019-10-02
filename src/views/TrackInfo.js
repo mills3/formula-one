@@ -30,7 +30,7 @@ const TrackInfo = ({ match }) => {
       }
     }
     fetchLapTime();
-  }, []);
+  }, [match.params.round, match.params.season]);
 
   return (  
     <div className="trackinfo view">

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const Logo = ({ width, animate }) => {
-
   return (  
     <svg viewBox="0 0 128 34.240002" width={width} id="logo" className={animate ? 'animate' : ''}>
       <path 

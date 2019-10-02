@@ -250,13 +250,16 @@ nav .nav-links a {
 }
 
 .toggle-standings button {
-  flex: 1;
-
   /* Style defaults, see Leaderboard.js for active styles */
-  padding: 1em;
+  flex: 1;
+  padding: 1.2em;
   border: none;
   background: none;
   color: #777;
+  font-family: 'Syncopate', sans-serif;
+  font-size: .6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
 }
 
 .leaderboards .table {
@@ -384,7 +387,10 @@ nav .nav-links a {
 
 /******************** CALENDAR ***********************/
 .calendar .season {
+  --fade-to-opacity: .5;
   color: #aaa;
+  font-size: 12vw;
+  opacity: .2;
 }
 
 .calendar-table {
@@ -403,6 +409,25 @@ nav .nav-links a {
 
 .race-component .racename {
   font-style: italic;
+}
+
+@media (min-width: 800px) {
+  .calendar {
+    grid-template-columns: auto 1fr;
+    padding-left: 4em;
+  }
+
+  .calendar .season {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    align-self: center;
+    font-size: 16vw;
+  }
+
+  .calendar-table {
+    grid-column: 1;
+  }
 }
 
 /********************** TRACK INFO ************************/
@@ -553,7 +578,7 @@ nav .nav-links a {
   padding: 0 1em;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   transition: 200ms;
 }
 
@@ -569,6 +594,7 @@ nav .nav-links a {
   color: var(--light);
   border: 1px solid var(--light);
   padding: 1em 1.6em;
+  font-family: 'Syncopate', sans-serif; 
 }
 
 .comparison .driver-list button:hover {
@@ -596,7 +622,7 @@ nav .nav-links a {
   /* transform: rotate(-90deg); */
   white-space: nowrap;
   color: var(--light);
-  letter-spacing: 10px;
+  letter-spacing: .3em;
 }
 
 .first-selection {
@@ -609,8 +635,27 @@ nav .nav-links a {
   color: var(--light);
 }
 
-.comparison .chart {
+.comparison .chart-wrapper {
   width: 100%;
+  height: 80%;
+  align-self: center;
+  /* justify-self: center; */
+  overflow: auto;
+  border: 1px solid var(--dark);
+}
+
+.comparison .chart-wrapper .chart {
+  width: 100%;
+  height: 100%;
+  min-width: 500px;
+}
+
+.comparison .loading {
+  justify-self: center;
+  align-self: center;
+  font-weight: 100;
+  font-size: var(--medium-text);
+  letter-spacing: .3em;
 }
 
 @media (min-width: 900px) {
@@ -618,7 +663,7 @@ nav .nav-links a {
     grid-template-columns: 200px 1fr;
   }
 
-  .comparison .page-heading {
+  .comparison .page-heading, .comparison .chart-wrapper {
     grid-column: 2;
     text-align: center;
   }
@@ -635,10 +680,14 @@ nav .nav-links a {
   .chart {
     grid-column: 2;
   }
+
+  .comparison .loading {
+    grid-column: 2;
+  }
 }
 
 
-.head-to-head {
+/* .head-to-head {
   grid-template-rows: auto 1fr;
 }
 
@@ -683,13 +732,8 @@ nav .nav-links a {
   transition: 300ms;
 }
 
-.head-to-head select:hover {
-  /* color: var(--light); */
-  /* border: 1px solid var(--light); */
-  background-color: #fff;
-}
 
-/* CAN'T WAIT TO SEE THIS AFTER 20 RACES ON MOBILE SCREENS */
+
 .chart {
   height: 80%;
   width: 100%;
@@ -698,7 +742,7 @@ nav .nav-links a {
   align-self: center;
   justify-self: center;
   min-height: 250px;
-}
+} */
 
 /* Enter animation */
 .appear {
@@ -724,7 +768,7 @@ nav .nav-links a {
 @keyframes appear {
   to { 
     transform: translateY(0); 
-    opacity: 1; 
+    opacity: var(--fade-to-opacity, 1); 
     -webkit-text-stroke-color: var(--white);
   }
 }
@@ -752,6 +796,24 @@ nav .nav-links a {
   animation-delay: 3s;
 }
 
+.nav p {
+  position: absolute;
+  width: 100%;
+  bottom: 1em;
+  left: 0;
+  font-size: var(--small-text);
+  letter-spacing: .2em;
+  text-align: center;
+  color: #aaa;
+  animation: fade-out 400ms forwards;
+  animation-delay: 3s;
+}
+
+.nav p a {
+  text-decoration: underline;
+  color: var(--light);
+}
+
 @keyframes loaded {
   100% { 
     height: var(--nav-height);
@@ -763,4 +825,8 @@ nav .nav-links a {
 
 @keyframes scale-down {
   to { transform: scale(.2); left: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
 }
