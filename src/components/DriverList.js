@@ -31,17 +31,17 @@ const DriverList = ({ getDrivers }) => {
       const data = await res.json();
       setList(data.MRData.DriverTable.Drivers);
     }
-    if(!localStorage.getItem('driverList')) {
+    if(!sessionStorage.getItem('driverList')) {
       fetchDrivers();
     } else {
-      setList(JSON.parse(localStorage.getItem('driverList')));
+      setList(JSON.parse(sessionStorage.getItem('driverList')));
     }
   }, []);
 
-  // Set driverList in localStorage
+  // Set driverList in sessionStorage
   useEffect(() => {
     if(list.length > 0) {
-      localStorage.setItem('driverList', JSON.stringify(list));
+      sessionStorage.setItem('driverList', JSON.stringify(list));
     }
   }, [list]);
 

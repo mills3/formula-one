@@ -121,15 +121,39 @@ nav {
   left: 0;
   width: 100%;
   z-index: 3;
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; */
+
+  display: grid;
+  grid-template-columns: auto 1fr;
   padding: 2em;
+
+  /* border-bottom: 1px solid red; */
+}
+
+nav .nav-links {
+  display: flex;
+  justify-content: center;
 }
 
 nav .nav-links a {
-  margin: 0 2em;
+  margin: 0 4vw;
   font-size: var(--small-text);
+}
+
+nav .nav-links .attribution {
+  position: absolute;
+  right: 2em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+nav .nav-links a span {
+  font-family: sans-serif;
+  text-transform: none;
+  opacity: .7;
+  font-size: 14px;
 }
 
 .active {
@@ -156,7 +180,7 @@ nav .nav-links a {
 }
 
 /**** small screens ****/
-@media (max-width: 650px) {
+@media (max-width: 1000px) {
   nav .nav-links {
     position: absolute;
     height: 100vh;
@@ -187,7 +211,15 @@ nav .nav-links a {
     animation: none;
   }
 
+  nav .nav-links .attribution {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
   .burger {
+    justify-self: end;
+    align-self: center;
     width: 50px;
     height: 30px;
     display: block;
@@ -772,6 +804,7 @@ nav .nav-links a {
     -webkit-text-stroke-color: var(--white);
   }
 }
+
 
 /*************** POSSIBLE NAV / LOGO LOADER ****************************/
 .nav {

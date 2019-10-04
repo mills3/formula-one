@@ -22,17 +22,17 @@ const Comparison = () => {
       const races = data.MRData.RaceTable.Races.map(d => d.Circuit.Location.country);
       setLocations(races);    
     }
-    if(!localStorage.getItem('locations')) {
+    if(!sessionStorage.getItem('locations')) {
       fetchRaceNames();
     } else {
-      setLocations(JSON.parse(localStorage.getItem('locations')));
+      setLocations(JSON.parse(sessionStorage.getItem('locations')));
     } 
   }, []);
 
-  // Set locations in localStorage
+  // Set locations in sessionStorage
   useEffect(() => {
     if(locations) {
-      localStorage.setItem('locations', JSON.stringify(locations));
+      sessionStorage.setItem('locations', JSON.stringify(locations));
     }
   }, [locations]);
 

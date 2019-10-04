@@ -16,27 +16,22 @@ const Calendar = () => {
       setCalendar(data.MRData.RaceTable.Races);
     }
 
-    if(!localStorage.getItem('calendar')) {
+    if(!sessionStorage.getItem('calendar')) {
       getCalendarData();
     } else {
-      setSeason(JSON.parse(localStorage.getItem('season')));
-      setCalendar(JSON.parse(localStorage.getItem('calendar')));
+      setSeason(JSON.parse(sessionStorage.getItem('season')));
+      setCalendar(JSON.parse(sessionStorage.getItem('calendar')));
     }
   }, []);
 
-  //Set localStorage 
-  /*
-  *******************************
-     CHECK THAT THIS ALWAYS WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  **********************************
-  */
+  //Set sessionStorage 
   useEffect(() => {
     if(calendar.length > 0) {
-      localStorage.setItem('calendar', JSON.stringify(calendar));
+      sessionStorage.setItem('calendar', JSON.stringify(calendar));
     }
 
     if(season !== '') {
-      localStorage.setItem('season', JSON.stringify(season));
+      sessionStorage.setItem('season', JSON.stringify(season));
     }
   }, [calendar, season]);
 
@@ -46,7 +41,7 @@ const Calendar = () => {
         <h1 className="page-heading">Calendar</h1>
         <h1 className="season outlined-text">{season}</h1>
       </div> */}
-      <h1 className="page-heading">Calendar</h1>
+      <h1 className="page-heading appear">Calendar</h1>
       <h1 className="season outlined-text appear">{season}</h1>
       <div className="calendar-table">
         {

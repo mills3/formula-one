@@ -49,17 +49,17 @@ const LeaderBoards = () => {
       const data = await response.json();
       setDrivers(data.MRData.StandingsTable.StandingsLists[0].DriverStandings);
     }
-    if(!localStorage.getItem('driversData')) {
+    if(!sessionStorage.getItem('driversData')) {
       getDriversData();
     } else {
-      setDrivers(JSON.parse(localStorage.getItem('driversData')));
+      setDrivers(JSON.parse(sessionStorage.getItem('driversData')));
     }
   }, []);
 
-  // Set driversData in localStorage 
+  // Set driversData in sessionStorage 
   useEffect(() => {
     if(drivers.length > 0) {
-      localStorage.setItem('driversData', JSON.stringify(drivers));
+      sessionStorage.setItem('driversData', JSON.stringify(drivers));
     }
   }, [drivers]);
 
@@ -70,17 +70,17 @@ const LeaderBoards = () => {
       const data = await response.json();
       setTeams(data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
     }
-    if(!localStorage.getItem('teamsData')) {
+    if(!sessionStorage.getItem('teamsData')) {
       getTeamsData();
     } else {
-      setTeams(JSON.parse(localStorage.getItem('teamsData')));
+      setTeams(JSON.parse(sessionStorage.getItem('teamsData')));
     }
   }, []);
 
-  // Set teamsData in localStorage 
+  // Set teamsData in sessionStorage 
   useEffect(() => {
     if(teams.length > 0) {
-      localStorage.setItem('teamsData', JSON.stringify(teams));
+      sessionStorage.setItem('teamsData', JSON.stringify(teams));
     }
   }, [teams]);
 

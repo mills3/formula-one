@@ -21,6 +21,7 @@ const Nav = () => {
         <NavLink exact to="/" onClick={toggleNav} activeClassName="active">LEADERBOARD</NavLink>
         <NavLink to="/head-to-head" onClick={toggleNav} activeClassName="active">HEAD TO HEAD</NavLink>
         <NavLink to="/calendar" onClick={toggleNav} activeClassName="active">CALENDAR</NavLink>
+        {/* <a className="attribution" href="https://ergast.com/mrd/" target="_blank" rel="noopener noreferrer"><span>Powered by </span><br></br>ERGAST.COM</a> */}
       </div> 
       <Burger handleClick={toggleNav} dynamicClass={burgerClass}/>
     </nav>
