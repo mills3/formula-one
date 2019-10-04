@@ -42,18 +42,19 @@ const Calendar = () => {
         <h1 className="season outlined-text">{season}</h1>
       </div> */}
       <h1 className="page-heading appear">Calendar</h1>
-      <h1 className="season outlined-text appear">{season}</h1>
+      <h1 className="season outlined-text appear delay1">{season}</h1>
       <div className="calendar-table">
         {
-          calendar.map(race => (
+          calendar.map((race, i) => (
             <Link to={`/trackinfo/${race.raceName}, ${race.round}, ${race.Circuit.Location.locality}, ${race.Circuit.Location.country}, ${season}`} key={race.round}>
-              <div className="race-component">
+              <div className="race-component appear" style={{ animationDelay: `${i * 50}ms` }}>
                 <p>{race.round}.</p> <p className="racename">{race.raceName}</p> <p>{race.date}</p>
               </div>
             </Link>
           ))
         }
-      </div>    
+      </div>  
+      <a className="attribution" href="https://ergast.com/mrd/" target="_blank" rel="noopener noreferrer">Powered by <span>ERGAST.COM</span></a>  
     </div>
   );
 }

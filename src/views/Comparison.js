@@ -67,18 +67,19 @@ const Comparison = () => {
   if(locations && data1 && data2) {
     return (  
       <div className="comparison view">
-        <h1 className="page-heading">HEAD TO HEAD</h1>
+        <h1 className="page-heading appear">HEAD TO HEAD</h1>
         <DriverList getDrivers={getSelectedDrivers}/>
         <div className="chart-wrapper">
           <LineChart data1={data1} data2={data2} locations={locations} />
         </div>
+        <a className="attribution" href="https://ergast.com/mrd/" target="_blank" rel="noopener noreferrer">Powered by <span>ERGAST.COM</span></a>
       </div>
     );
   }
 
   return (  
     <div className="comparison view">
-      <h1 className="page-heading">HEAD TO HEAD</h1>
+      <h1 className="page-heading appear">HEAD TO HEAD</h1>
       <DriverList getDrivers={getSelectedDrivers}/>
       <h2 className="loading">PLOTTING DATA...</h2>
     </div>

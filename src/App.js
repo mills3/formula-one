@@ -15,7 +15,7 @@ import Comparison from './views/Comparison';
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(true);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const toggleTheme = () => {
     //document.body.style.setProperty('--white', 'red');

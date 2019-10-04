@@ -19,10 +19,12 @@ const DriverList = ({ getDrivers }) => {
   }
 
   const handleCompare = () => {
-    getDrivers(driver1, driver2);
-    setDriver1('');
-    setDriver2('');
-    setOpen(false);
+    if(driver1 !== '' && driver2 !== '') {
+      getDrivers(driver1, driver2);
+      setDriver1('');
+      setDriver2('');
+      setOpen(false);
+    }
   }
 
   useEffect(() => {

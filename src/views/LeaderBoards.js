@@ -142,6 +142,7 @@ const LeaderBoards = () => {
           }
         </div>
       </div>
+      <a className="attribution" href="https://ergast.com/mrd/" target="_blank" rel="noopener noreferrer">Powered by <span>ERGAST.COM</span></a>
     </div>
   );
 }
