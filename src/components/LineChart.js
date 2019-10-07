@@ -71,20 +71,11 @@ const LineChart = ({ locations, data1, data2 }) => {
     }
   }
 
-  if (data1 && data2 && locations) {
-    return (
-      <div className="chart">
-        <Line data={data} options={options} />
-      </div>
-    );
-  }
-
   return (
     <div className="chart">
-      <h2>Fetching...</h2>
+      <Line data={data} options={options} />
     </div>
   );
-
 }
 
 export default LineChart;

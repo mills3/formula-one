@@ -128,7 +128,7 @@ a:hover {
 
 .nav #logo path {
   animation: draw 2s forwards;
-  fill: none;
+  fill: #3a414e;
   stroke: #fff;
   stroke-dasharray: 235px;
   stroke-dashoffset: 235px;
@@ -136,7 +136,7 @@ a:hover {
 }
 
 @keyframes outline {
-  50% { stroke-dashoffset: 0; fill: none; }
+  50% { stroke-dashoffset: 0; fill: #3a414e; }
   100% { stroke-dashoffset: 0; fill: #fff; }
 }
 
@@ -255,7 +255,6 @@ a:hover {
     transform: rotate(29deg);
   }
 }
-
 
 /**************** LEADERBOARDS *****************************/
 .leaderboards {
@@ -517,6 +516,7 @@ a:hover {
 /******************** TEAM INFO ******************************/
 .teaminfo {
   grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr 1fr;
 }
 
  .teaminfo * {

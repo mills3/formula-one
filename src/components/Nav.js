@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from './Logo';
 import Burger from './Burger';
 
 const Nav = ({ loading }) => {
   const [open, setOpen] = useState(false);
-  const [loaded, setLoaded] = useState(false);
 
   const navClass = open ? 'show-nav' : '';
   const burgerClass = open ? 'show-cross' : '';
@@ -13,12 +12,6 @@ const Nav = ({ loading }) => {
   const toggleNav = () => {
     setOpen(!open);
   }
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoaded(true)
-  //   }, 3000)
-  // }, []);
 
   const dunLoading = loading ? '' : 'loaded';
 

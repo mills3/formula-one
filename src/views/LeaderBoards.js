@@ -2,27 +2,24 @@ import React, { useEffect, useState } from 'react';
 import DriverLeader from '../components/DriverLeader';
 import TeamLeader from '../components/TeamLeader';
 
-const active = {
+const activeStyles = {
   background: '#0c0e11',
   color: '#fff'
 }
 
 const LeaderBoards = ({ driversData, teamsData }) => {
-  // const [drivers, setDrivers] = useState([]);
-  const [drivers, setDrivers] = useState(driversData);
-  const [teams, setTeams] = useState(teamsData);
   const [table, setTable] = useState('Drivers');
-  const [driverBtn, setDriverBtn] = useState(active);
+  const [driverBtn, setDriverBtn] = useState(activeStyles);
   const [constructorBtn, setConstructorBtn] = useState({});
   
   // Set active button styles
   useEffect(() => {
     if(table === 'Drivers') {
-      setDriverBtn(active);
+      setDriverBtn(activeStyles);
       setConstructorBtn({});
     } else {
       setDriverBtn({});
-      setConstructorBtn(active);
+      setConstructorBtn(activeStyles);
     }
   }, [table]);
 

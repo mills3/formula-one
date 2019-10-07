@@ -69,7 +69,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Nav loading={loading}/>
-        {/* <Route exact path="/" component={LeaderBoards} /> */}
         <Route exact path="/" render={()=> <LeaderBoards driversData={drivers} teamsData={teams} />} />
         <Route path="/driverInfo/:id, :position, :points, :name, :nation, :number, :firstName" component={DriverInfo} />
         <Route path="/teaminfo/:id, :position, :points, :name, :nation" component={TeamInfo} />
