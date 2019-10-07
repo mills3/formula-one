@@ -5,44 +5,72 @@ import Nav from './components/Nav';
 import LeaderBoards from './views/LeaderBoards';
 import DriverInfo from './views/DriverInfo';
 import TeamInfo from './views/TeamInfo';
-// import HeadToHead from './views/HeadToHead';
 import Calendar from './views/Calendar';
 import TrackInfo from './views/TrackInfo';
-// import LoadingScreen from './components/LoadingScreen';
-import NavLoader from './components/NavLoader';
 import Comparison from './views/Comparison';
 
-
 function App() {
-  const [darkTheme, setDarkTheme] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [drivers, setDrivers] = useState([]);
+  const [teams, setTeams] = useState([]);
 
-  const toggleTheme = () => {
-    //document.body.style.setProperty('--white', 'red');
-    if(darkTheme) {
-      document.body.style.setProperty('--textColor', '#1f232a');
-      document.body.style.setProperty('--bgGradient', 'linear-gradient(to top, #ddd, #fff)');
-      setDarkTheme(false);
-    } else {
-      document.body.style.setProperty('--textColor', '#ddd');
-      document.body.style.setProperty('--bgGradient', 'linear-gradient(to top, #000, #3a414e)');
-      setDarkTheme(true);
+  // SET AND GET DRIVERS DATA
+  useEffect(() => {
+    const getDriversData = async () => {
+      const response = await fetch('https://ergast.com/api/f1/current/driverStandings.json');
+      const data = await response.json();
+      setDrivers(data.MRData.StandingsTable.StandingsLists[0].DriverStandings);
     }
-  }
+    if(!sessionStorage.getItem('driversData')) {
+        getDriversData();
+    } else {
+        setDrivers(JSON.parse(sessionStorage.getItem('driversData')));  
+    }
+  }, []);
 
-  //Logo loader
+  // Set driversData in sessionStorage 
+  useEffect(() => {
+    if(drivers.length > 0) {
+      sessionStorage.setItem('driversData', JSON.stringify(drivers));
+    }
+  }, [drivers]);
+
+  // SET AND GET TEAMS DATA
+  useEffect(() => {
+    const getTeamsData = async () => {
+      const response = await fetch('https://ergast.com/api/f1/current/constructorStandings.json');
+      const data = await response.json();
+      setTeams(data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
+    }
+    if(!sessionStorage.getItem('teamsData')) {
+      getTeamsData();
+    } else {
+      setTeams(JSON.parse(sessionStorage.getItem('teamsData')));
+    }
+  }, []);
+
+  // Set teamsData in sessionStorage 
+  useEffect(() => {
+    if(teams.length > 0) {
+      sessionStorage.setItem('teamsData', JSON.stringify(teams));
+    }
+  }, [teams]);
+  
+  // If data loaded and animation complete
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false);
-    }, 3400);
-  }, []);
+      if(drivers.length > 0) {
+        setLoading(false);
+      }
+    }, 2000);
+  }, [drivers]);
 
   return (
     <div className="App">
-      { loading && <NavLoader /> }
       <BrowserRouter>
-        <Nav onClick={toggleTheme} handleTheme={toggleTheme}/>
-        <Route exact path="/" component={LeaderBoards} />
+        <Nav loading={loading}/>
+        {/* <Route exact path="/" component={LeaderBoards} /> */}
+        <Route exact path="/" render={()=> <LeaderBoards driversData={drivers} teamsData={teams} />} />
         <Route path="/driverInfo/:id, :position, :points, :name, :nation, :number, :firstName" component={DriverInfo} />
         <Route path="/teaminfo/:id, :position, :points, :name, :nation" component={TeamInfo} />
         <Route path="/head-to-head" component={Comparison} />

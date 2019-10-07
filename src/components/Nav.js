@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from './Logo';
 import Burger from './Burger';
 
-const Nav = () => {
+const Nav = ({ loading }) => {
   const [open, setOpen] = useState(false);
-  // const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const navClass = open ? 'show-nav' : '';
   const burgerClass = open ? 'show-cross' : '';
@@ -14,14 +14,21 @@ const Nav = () => {
     setOpen(!open);
   }
 
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoaded(true)
+  //   }, 3000)
+  // }, []);
+
+  const dunLoading = loading ? '' : 'loaded';
+
   return (
-    <nav>
+    <nav className={`nav ${dunLoading}`}>
       <Link to="/"><Logo width={'60px'} /></Link>
       <div className={`nav-links ${navClass}`}>
         <NavLink exact to="/" onClick={toggleNav} activeClassName="active">LEADERBOARD</NavLink>
         <NavLink to="/head-to-head" onClick={toggleNav} activeClassName="active">HEAD TO HEAD</NavLink>
         <NavLink to="/calendar" onClick={toggleNav} activeClassName="active">CALENDAR</NavLink>
-        {/* <a className="attribution" href="https://ergast.com/mrd/" target="_blank" rel="noopener noreferrer"><span>Powered by </span><br></br>ERGAST.COM</a> */}
       </div> 
       <Burger handleClick={toggleNav} dynamicClass={burgerClass}/>
     </nav>
