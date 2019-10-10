@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import tracks from '../tracks';
 
 const TrackInfo = ({ match }) => {
@@ -50,6 +51,8 @@ const TrackInfo = ({ match }) => {
       <svg viewBox="0 0 105.83334 79.374998">
         <path d={tracks[match.params.country]} className="path" style={pathStyle} />
       </svg>
+
+      {fastestLap && <Link to={`/raceResults/${match.params.round}, ${match.params.country}`}>ALL RESULTS</Link>}
      
     </div>
   );

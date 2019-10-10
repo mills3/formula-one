@@ -8,6 +8,7 @@ import TeamInfo from './views/TeamInfo';
 import Calendar from './views/Calendar';
 import TrackInfo from './views/TrackInfo';
 import Comparison from './views/Comparison';
+import RaceResults from './views/RaceResults';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -75,6 +76,7 @@ function App() {
         <Route path="/head-to-head" component={Comparison} />
         <Route path="/calendar" component={Calendar} />
         <Route path="/trackinfo/:name, :round, :locale, :country, :season" component={TrackInfo} />
+        <Route path="/raceResults/:round, :country" component={RaceResults} />
       </BrowserRouter>
     </div>
   );

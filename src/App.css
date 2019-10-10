@@ -133,11 +133,12 @@ a:hover {
   stroke-dasharray: 235px;
   stroke-dashoffset: 235px;
   animation: outline 2s forwards ease-in;
+  animation-delay: 500ms;
 }
 
 @keyframes outline {
   50% { stroke-dashoffset: 0; fill: #3a414e; }
-  100% { stroke-dashoffset: 0; fill: #fff; }
+  100% { stroke-dashoffset: 0; fill: #fff; stroke-width: 0; }
 }
 
 .nav .nav-links {
@@ -287,6 +288,7 @@ a:hover {
   font-size: .6rem;
   letter-spacing: .2em;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .leaderboards .table {
@@ -712,6 +714,46 @@ a:hover {
   .comparison .attribution {
     bottom: .5em;
   }
+}
+
+/******************RACE RESULTS *******************************/
+.race-results {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto 1fr;
+  align-items: center;
+}
+
+.race-results .results-head, 
+.race-results .result  {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 3fr;
+  text-transform: uppercase;
+  font-size: var(--small-text);
+  padding: .5em;
+} 
+
+.race-results .results-head {
+  background-color: rgba(255,255,255, .3);
+}
+
+.race-results .results-body {
+  overflow: hidden;
+  height: 90%;
+  grid-column: 1 / -1;
+}
+
+.race-results .results-body {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.race-results .result:nth-child(even) {
+  background-color: rgba(0,0,0,0.3);
+}
+
+.race-results .result .grid {
+  justify-self: center;
 }
 
 /* Enter animation */
