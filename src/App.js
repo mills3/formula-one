@@ -9,11 +9,13 @@ import Calendar from './views/Calendar';
 import TrackInfo from './views/TrackInfo';
 import Comparison from './views/Comparison';
 import RaceResults from './views/RaceResults';
+import QualifyingResults from './views/QualifyingResults';
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [drivers, setDrivers] = useState([]);
   const [teams, setTeams] = useState([]);
+  const [lastRound, setLastRound] = useState('');
 
   // SET AND GET DRIVERS DATA
   useEffect(() => {
@@ -47,6 +49,7 @@ function App() {
       getTeamsData();
     } else {
       setTeams(JSON.parse(sessionStorage.getItem('teamsData')));
+      setLastRound(JSON.parse(sessionStorage.getItem('lastRound')));
     }
   }, []);
 
@@ -56,6 +59,27 @@ function App() {
       sessionStorage.setItem('teamsData', JSON.stringify(teams));
     }
   }, [teams]);
+
+  // SET AND GET LAST ROUND
+  useEffect(() => {
+    const getLastRound = async () => {
+      const response = await fetch('https://ergast.com/api/f1/current/constructorStandings.json');
+      const data = await response.json();
+      setLastRound(data.MRData.StandingsTable.StandingsLists[0].round);
+    }
+    if(!sessionStorage.getItem('lastRound')) {
+        getLastRound();
+    } else {
+        setLastRound(JSON.parse(sessionStorage.getItem('lastRound')));  
+    }
+  }, []);
+
+  // Set lastRound in sessionStorage 
+  useEffect(() => {
+    if(lastRound) {
+      sessionStorage.setItem('lastRound', lastRound);
+    }
+  }, [lastRound]);
   
   // If data loaded and animation complete
   useEffect(() => {
@@ -77,6 +101,7 @@ function App() {
         <Route path="/calendar" component={Calendar} />
         <Route path="/trackinfo/:name, :round, :locale, :country, :season" component={TrackInfo} />
         <Route path="/raceResults/:round, :country" component={RaceResults} />
+        <Route path="/qualifying-results/:round, :country" component={QualifyingResults} />
       </BrowserRouter>
     </div>
   );

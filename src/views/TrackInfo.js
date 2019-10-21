@@ -37,7 +37,7 @@ const TrackInfo = ({ match }) => {
     <div className="trackinfo view">
       <div className="stats">
         <div>
-          <h1 className="track-country page-heading appear">{ match.params.country }</h1>
+          <h1 className="track-country page-heading appear">{match.params.country === 'UK' ? 'GREAT BRITAIN': match.params.country}</h1>
           <h3 className="track-name appear delay1">{ match.params.locale }</h3>
         </div>  
         <h1 className="outlined-text appear delay2">{ match.params.round }</h1>
@@ -52,7 +52,14 @@ const TrackInfo = ({ match }) => {
         <path d={tracks[match.params.country]} className="path" style={pathStyle} />
       </svg>
 
-      {fastestLap && <Link to={`/raceResults/${match.params.round}, ${match.params.country}`}>ALL RESULTS</Link>}
+      {fastestLap && <div className="result-btns appear delay4">
+        <Link to={`/raceResults/${match.params.round}, ${match.params.country}`}>RACE RESULTS</Link>
+        <Link to={`/qualifying-results/${match.params.round}, ${match.params.country}`}>QUALIFYING RESULTS</Link>
+      </div>}
+{/* 
+      {fastestLap && <Link to={`/raceResults/${match.params.round}, ${match.params.country}`}>RACE RESULTS</Link>}
+
+      {fastestLap && <Link to={`/qualifying-results/${match.params.round}, ${match.params.country}`}>QUALIFYING RESULTS</Link>} */}
      
     </div>
   );

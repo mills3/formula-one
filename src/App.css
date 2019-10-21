@@ -80,11 +80,13 @@
 }
 
 .outlined-text {
+  --fade-to-opacity: .5;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--light);
   font-size: var(--outline);
   color: #999;
+  
 }
 
 a {
@@ -428,6 +430,7 @@ a:hover {
 .calendar-table {
   overflow: auto;
   font-family: sans-serif;
+  padding-right: 1em;
 }
 
 .race-component {
@@ -498,6 +501,28 @@ a:hover {
   animation-delay: 500ms;
 }
 
+.trackinfo .result-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trackinfo .result-btns a {
+  color: var(--light);
+  border: 1px solid var(--light);
+  padding: 1em 1.6em;
+  padding: .6em .9em;
+  font-size: var(--small-text);
+  letter-spacing: 2px;
+  margin-top: 1em;
+  flex: 0 1 300px;
+  opacity: .4;
+}
+
+.trackinfo .result-btns a:hover {
+  opacity: 1;
+}
+
 @keyframes draw {
   to { stroke-dashoffset: 0; opacity: 1; }
 }
@@ -512,6 +537,15 @@ a:hover {
   .trackinfo .stats {
     justify-content: center;
     padding-right: 2em;
+  }
+
+  .trackinfo .result-btns {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  .trackinfo .result-btns a {
+    margin: .5em;
   }
 }
 
@@ -718,34 +752,40 @@ a:hover {
 
 /******************RACE RESULTS *******************************/
 .race-results {
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 9fr;
   align-items: center;
+  justify-content: center;
+}
+
+.race-results .page-heading {
+  text-align: center;
+}
+
+.race-results .results-table {
+  justify-self: center;
+  height: 100%;
+  width: 90vw;
+  max-width: 600px;
+  overflow-y: auto;
 }
 
 .race-results .results-head, 
-.race-results .result  {
-  grid-column: 1 / -1;
+.race-results .result {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr 3fr;
+  grid-template-columns: 1fr 4fr 2fr 3fr;
+  gap: 5px;
   text-transform: uppercase;
   font-size: var(--small-text);
   padding: .5em;
 } 
 
 .race-results .results-head {
-  background-color: rgba(255,255,255, .3);
+  background-color: rgba(255,255,255, .2);
 }
 
 .race-results .results-body {
-  overflow: hidden;
   height: 90%;
-  grid-column: 1 / -1;
-}
-
-.race-results .results-body {
-  height: 100%;
-  overflow-y: scroll;
 }
 
 .race-results .result:nth-child(even) {
@@ -754,6 +794,21 @@ a:hover {
 
 .race-results .result .grid {
   justify-self: center;
+}
+
+.race-results .quali3 {
+  border-top: 1px solid green;
+}
+
+.race-results .quali2 {
+  border-top: 1px solid red;
+}
+
+@media (orientation: landscape) {
+  .race-results .results-head, 
+  .race-results .result {
+    font-size: var(--medium-text);
+  }
 }
 
 /* Enter animation */
@@ -777,6 +832,10 @@ a:hover {
   animation-delay: 400ms;
 }
 
+.delay4 {
+  animation-delay: 500ms;
+}
+
 @keyframes appear {
   to { 
     transform: translateY(0); 
@@ -784,6 +843,3 @@ a:hover {
     -webkit-text-stroke-color: var(--light);
   }
 }
-
-
-
