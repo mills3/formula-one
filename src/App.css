@@ -467,7 +467,7 @@ a:hover {
 
 /********************** TRACK INFO ************************/
 .trackinfo {
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr auto;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -503,19 +503,18 @@ a:hover {
 
 .trackinfo .result-btns {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 }
 
 .trackinfo .result-btns a {
   color: var(--light);
   border: 1px solid var(--light);
-  padding: 1em 1.6em;
   padding: .6em .9em;
   font-size: var(--small-text);
   letter-spacing: 2px;
   margin-top: 1em;
-  flex: 0 1 300px;
+  flex: 1;
+  max-width: 300px;
   opacity: .4;
 }
 

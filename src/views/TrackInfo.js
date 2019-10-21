@@ -53,13 +53,9 @@ const TrackInfo = ({ match }) => {
       </svg>
 
       {fastestLap && <div className="result-btns appear delay4">
-        <Link to={`/raceResults/${match.params.round}, ${match.params.country}`}>RACE RESULTS</Link>
-        <Link to={`/qualifying-results/${match.params.round}, ${match.params.country}`}>QUALIFYING RESULTS</Link>
+        <Link to={`/raceResults/${match.params.round}, ${match.params.country}`}>RACE</Link>
+        <Link to={`/qualifying-results/${match.params.round}, ${match.params.country}`}>QUALIFYING</Link>
       </div>}
-{/* 
-      {fastestLap && <Link to={`/raceResults/${match.params.round}, ${match.params.country}`}>RACE RESULTS</Link>}
-
-      {fastestLap && <Link to={`/qualifying-results/${match.params.round}, ${match.params.country}`}>QUALIFYING RESULTS</Link>} */}
      
     </div>
   );

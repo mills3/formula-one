@@ -16,7 +16,6 @@ const RaceResults = ({ match }) => {
   return (  
     <div className="race-results view">
       <h1 className="page-heading appear">{match.params.country === 'UK' ? 'GREAT BRITAIN': match.params.country}</h1>
-      {/* <h1 className="outlined-text appear delay1">{match.params.round}</h1> */}
       <div className="results-table">
         {results.length > 0 && <div className="results-head">
           <p></p>
