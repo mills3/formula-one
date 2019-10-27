@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-const QualifyingResults = ({ match }) => {
-  const [results, setResults] = useState([]);
-  
-  useEffect(() => {
-    const fetchResults = async () => {
-      const response = await fetch(`https://ergast.com/api/f1/current/${match.params.round}/qualifying.json`);
-      const data = await response.json();
-      setResults(data.MRData.RaceTable.Races[0].QualifyingResults);
-    }
-    fetchResults();
-  }, [match.params.round]);
+const QualifyingResults = ({match, location}) => {
 
   return (  
     <div className="race-results view">
       <h1 className="page-heading appear">{match.params.country === 'UK' ? 'GREAT BRITAIN': match.params.country}</h1>
       <div className="results-table">
-        {results.length > 0 && <div className="results-head">
+        {location.state.length > 0 && <div className="results-head">
           <p></p>
           <p>DRIVER</p>
           <p>ROUND</p>
@@ -24,7 +14,7 @@ const QualifyingResults = ({ match }) => {
         </div>}
         <div className="results-body quali">
           {
-            results.map((lap, i) => {
+            location.state.map((lap, i) => {
               let round = i < 10 ? 'Q3' : i < 15 ? 'Q2' : 'Q1';
               // Visually seperate the qualifying rounds
               let quali3 = i === 10 ? 'quali3' : '';

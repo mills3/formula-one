@@ -5,6 +5,8 @@ import tracks from '../tracks';
 const TrackInfo = ({ match }) => {
   const [pathLength, setPathLength] = useState('');
   const [fastestLap, setFastestLap] = useState(null);
+  //qualifying 
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     const path = document.querySelector('.path');
@@ -33,6 +35,18 @@ const TrackInfo = ({ match }) => {
     fetchLapTime();
   }, [match.params.round, match.params.season]);
 
+  //Get qualifying results 
+  useEffect(() => {
+    const fetchResults = async () => {
+      const response = await fetch(`https://ergast.com/api/f1/current/${match.params.round}/qualifying.json`);
+      const data = await response.json();
+      if(data.MRData.RaceTable.Races[0]) {
+        setResults(data.MRData.RaceTable.Races[0].QualifyingResults);
+      }
+    }
+    fetchResults();
+  }, [match.params.round]);
+
   return (  
     <div className="trackinfo view">
       <div className="stats">
@@ -52,10 +66,19 @@ const TrackInfo = ({ match }) => {
         <path d={tracks[match.params.country]} className="path" style={pathStyle} />
       </svg>
 
-      {fastestLap && <div className="result-btns appear delay4">
+      <div className="result-btns appear delay4">
+        {fastestLap && <Link to={`/raceResults/${match.params.round}, ${match.params.country}`}>Race</Link>}
+
+        {results.length > 0 && <Link to={{
+          pathname: `/qualifying-results/${match.params.country}`,
+          state: results
+          }} >QUALIFYING</Link>}
+      </div>
+
+      {/* {fastestLap && <div className="result-btns appear delay4">
         <Link to={`/raceResults/${match.params.round}, ${match.params.country}`}>RACE</Link>
         <Link to={`/qualifying-results/${match.params.round}, ${match.params.country}`}>QUALIFYING</Link>
-      </div>}
+      </div>} */}
      
     </div>
   );

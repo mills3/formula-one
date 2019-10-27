@@ -101,7 +101,7 @@ function App() {
         <Route path="/calendar" component={Calendar} />
         <Route path="/trackinfo/:name, :round, :locale, :country, :season" component={TrackInfo} />
         <Route path="/raceResults/:round, :country" component={RaceResults} />
-        <Route path="/qualifying-results/:round, :country" component={QualifyingResults} />
+        <Route path="/qualifying-results/:country" component={QualifyingResults} />
       </BrowserRouter>
     </div>
   );
